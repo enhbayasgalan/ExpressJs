@@ -1,15 +1,42 @@
-import express from 'express';
+import express from "express";
+import { createUser } from "../controller/users/create-user.js";
 
 export const AuthenticationRouter = express.Router();
 
-const valLoginInput = (req, res, next) => {
-    const {email, password} = req.body
-    console.log(req);
-}
+const loginUser = (req, res) => {
+  console.log("login controller working");
+};
 
-AuthenticationRouter.post('/login', )
+const valSignUpInput = (req, res, next) => {
+  console.log("middle ware running");
+  const { email, password } = req.body;
+  if (!email) {
+    res.status(400).json({ error: "Bad request", message: "Email request" });
+  } else if (!password) {
+    res.status(400).json({ error: "Bad request", message: "Password request" });
+  } else {
+    next();
+  }
+  console.log(req);
+};
 
-AuthenticationRouter.get('/', (req, res) => {
-    console.log(req);
-    res.send('now working')
-})
+// const valLoginInput = (req, res, next) => {
+//     console.log('middle ware running');
+//     const {email, password} = req.body;
+//     if (!email) {
+//         res.status(400).json({ error: "Bad request", message: "Email request"});
+//     } else if (!password) {
+//         res.status(400).json({ error: "Bad request", message: "Password request"})
+//     } else {
+//         next()
+//     }
+//     console.log(req);
+// }
+
+// AuthenticationRouter.post('/login', valLoginInput, loginUser)
+AuthenticationRouter.post("/sign-up", valSignUpInput, createUser);
+
+AuthenticationRouter.get("/", (req, res) => {
+  console.log(req);
+  res.send("now working");
+});

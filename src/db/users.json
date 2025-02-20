@@ -1,1 +1,7 @@
-[{"firstName":"osohoo","seconName":"bayr"},{"firstName":"osohoo","seconName":"bayr"},{"firstName":"osohoo","seconName":"bayr"},{"firstName":"osohoo","seconName":"bayr"},{"firstName":"osohoo","seconName":"bayraa"}]
+[
+  { "email": "osohoo", "password": "bayr" },
+  { "email": "osohoo", "password": "bayr" },
+  { "email": "osohoo", "password": "bayr" },
+  { "email": "osohoo", "password": "bayr" },
+  { "email": "osohoo", "password": "bayraa" }
+]
