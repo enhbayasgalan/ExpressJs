@@ -1,7 +1,7 @@
 import express from "express";
 import { userRouter } from "./routers/user-router.js";
 import { productRouter } from "./routers/product-router.js";
-import { AuthenticationRouter } from "./routers/authentication.js";
+
 import { connect } from "mongoose";
 import { Users } from "./models/comment.model.js";
 import { userGet } from "./controller/userData/Userget.js";
@@ -45,7 +45,6 @@ app.post("/users", async (req, res) => {
 
 
 app.use("/users", userRouter);
-app.use("/authentication", AuthenticationRouter);
 app.use("/products", productRouter);
 
 app.listen(port, () => {
