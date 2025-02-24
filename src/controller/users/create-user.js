@@ -1,25 +1,15 @@
-import { users } from "./get-users.js"
-import fs from 'fs'
-import { v4 as uuidv4 } from 'uuid';
+import { Users } from "../../schema/userSchema.js";
 
-export const  createUser =  (req , res) => {
-    const {firstName, lastName, secondName, password} = req.body
-    const id = uuidv4()
-    const relax = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@.#$!%*?&])[A-Za-z\d@.#$!%*?&]{8,15}$/;
-    if (users.map((user)=> user.secondName).includes(secondName)) {
-        res.send(`${secondName} use, find secondName`)
-    } else {
-        if (relax.test(password) == true) {
-            users.push({id, firstName, lastName, secondName, password})
-            fs.writeFileSync('src/db/users.json', JSON.stringify(users))
-            res.send("like")
-        } else {
-            res.send('password ok')
-        }
+export const  createUser = async (req , res) => {
+    const {name, password} = req.body;
+
+    try{
+        const newUser = await Users.create({
+            name: name,
+            password: password,
+        });
+        res.send(newUser).status(201);
+    }catch(err){
+        res.send(err).status(500);
     }
-
-    
-    // users.push(req.body)
-    // fs.writeFileSync("src/db/users.json", JSON.stringify(users))
-    // res.send(users)
 }

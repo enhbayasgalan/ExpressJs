@@ -1,4 +1,4 @@
-import { Users } from "../../models/comment.model.js";
+import { Users } from "../../schema/userSchema.js";
 
 
 export const userGet = async (req, res) => {

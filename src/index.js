@@ -3,7 +3,7 @@ import { userRouter } from "./routers/user-router.js";
 import { productRouter } from "./routers/product-router.js";
 
 import { connect } from "mongoose";
-import { Users } from "./models/comment.model.js";
+import { Users } from "./schema/userSchema.js";
 import { userGet } from "./controller/userData/Userget.js";
 
 
@@ -26,7 +26,7 @@ const port = 4000;
 
 app.use(express.json());
 
-app.get("/users", userGet)
+// app.get("/users", userGet)
 
 app.post("/users", async (req, res) => {
     const {name} = req.body

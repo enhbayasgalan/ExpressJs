@@ -1,6 +1,10 @@
-import fs  from 'fs';
-const rawUserData = fs.readFileSync('src/db/users.json');
-export const users = JSON.parse(rawUserData)
-export const getUsers = (req, res) => {
-    res.send(JSON.parse(rawUserData))
+import { Users } from "../../schema/userSchema.js";
+export const getUsers = async (req, res) => {
+    try{
+        const users = await Users.find({});
+        res.status(200).send(users);
+    }
+    catch(err){
+        res.status(500).send(err);
+    }
 }
