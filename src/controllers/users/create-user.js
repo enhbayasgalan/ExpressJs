@@ -1,4 +1,4 @@
-import { Users } from "../../schema/userSchema.js";
+import { Users } from "../../schemas/userSchema.js";
 
 export const  createUser = async (req , res) => {
     const {name, password} = req.body;
